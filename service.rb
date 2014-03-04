@@ -7,13 +7,13 @@ def outfile
 end
 
 get '/paint' do
-  AsciiPaint.paint(params['ascii'], outfile)
+  AsciiPaint.paint(params['ascii'], outfile, color_map: { ' ' => :transparent })
   path = Dir.pwd + '/' + outfile
   send_file path
 end
 
 get '/block_letters' do
-  AsciiPaint.block_paint(params['letters'], outfile)
+  AsciiPaint.block_paint(params['letters'], outfile, color_map: { ' ' => :transparent})
   path = Dir.pwd + '/' + outfile
   send_file path
 end
